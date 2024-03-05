@@ -14,11 +14,11 @@ Create a virtual environment using Python.
 $python -m venv venv
 
 Activate the virtual environment
-$venv/scripts/activate
+venv/scripts/activate
 
 #### Step 02
 Install required libraries
-$pip install pandas==2.2.1, ezdxf==1.1.4, odfpy==1.4.1
+pip install pandas==2.2.1, ezdxf==1.1.4, odfpy==1.4.1
 
 #### Step 03
 Replace your data file name and location in app.py file
