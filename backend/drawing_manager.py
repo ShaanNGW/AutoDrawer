@@ -12,6 +12,7 @@ from .cs import CSS
 # DrawingManager class -> Class
 class DrawingManager:
 
+    # Litarals
     # Colors
     BLACK = colors.RGB(r=0, g=0, b=0)
     WHITE = colors.RGB(r=225, g=225, b=225)
@@ -21,6 +22,11 @@ class DrawingManager:
     GREEN = colors.RGB(r=0, g=255, b=0)
     CYEN = colors.RGB(r=0, g=255, b=255)
     PINK = colors.RGB(r=255, g=105, b=180)
+
+    # CDrawing types
+    LS_AND_CSS: str = 'ls_and_css'
+    LS: str = 'ls_only'
+    CSS: str = 'css_only'
 
     # Class constructor -> Method
     def __init__(self) -> None:
@@ -43,7 +49,7 @@ class DrawingManager:
         self.__msp = self.__doc.modelspace()
     
     # Draw ls -> Method
-    def draw_ls(self, ls_data: list, base_point=pt.point(0.0, 0.0), v_scale: int=100, h_scale: int=1000, tbm: float=None, title: str='') -> tuple:
+    def __draw_ls(self, ls_data: list, base_point: tuple, v_scale: int, h_scale: int, tbm: float, title: str) -> tuple:
 
         # If tbm is None
         if (tbm == None):
@@ -147,7 +153,7 @@ class DrawingManager:
         return line_01_end
     
     # Draw ls -> Method
-    def draw_css(self, css_data: list, base_point=pt.point(0.0, 0.0), v_scale: int=100, h_scale: int=100, tbm: float=None):
+    def __draw_css(self, css_data: list, base_point=pt.point(0.0, 0.0), v_scale: int=100, h_scale: int=100, tbm: float=None) -> tuple:
         
         # If tbm is None
         if (tbm == None):
@@ -246,10 +252,32 @@ class DrawingManager:
             # Draw ground points
             cs_ground_line = self.__msp.add_polyline2d(points=cs_grounds)
 
-            
-
             new_base = pt.add_point(line_01_end, self.__drawing_gap)
+        
+        return new_base
+    
+    # Draw drawings
+    def draw(self, drawing_type: str, ls_data: list=[], cs_data: list=[], ls_base=(0.0, 0.0), css_base=(0.0, 0.0), ls_tbm: float=None, css_tbm: float=None, ls_v_scale: int=100, ls_h_scale: int=1000, css_v_scale: int=100, css_h_scale: int=100, ls_title: str=''):
+        # If drawing_type is LS_AND_CSS
+        if (drawing_type == DrawingManager.LS_AND_CSS):
+            # Draw LS
+            ls_last_point: tuple = self.__draw_ls(ls_data=ls_data, base_point=ls_base, v_scale=ls_v_scale, h_scale=ls_h_scale, tbm=ls_tbm, title=ls_title)
+            # Draw CSS
+            cs_las_point: tuple = self.__draw_css(css_data=cs_data, base_point=ls_last_point, v_scale=css_v_scale, h_scale=css_h_scale, tbm=css_tbm)
+            # Save Drawing
+            self.__doc.saveas('test.dxf')
 
-            
-
-        self.__doc.saveas('test.dxf')
+        # If drawing_type is LS
+        elif (drawing_type == DrawingManager.LS):
+            # Draw LS
+            ls_last_point: tuple = self.__draw_ls(ls_data=ls_data, base_point=ls_base, v_scale=ls_v_scale, h_scale=ls_h_scale, tbm=ls_tbm, title=ls_title)
+            # Save Drawing
+            self.__doc.saveas('test.dxf')
+        
+        # If drawing_type is CSS
+        elif (drawing_type == DrawingManager.CSS):
+            # Draw CSS
+            cs_las_point: tuple = self.__draw_css(css_data=cs_data, base_point=css_base, v_scale=css_v_scale, h_scale=css_h_scale, tbm=css_tbm)
+            # Save Drawing
+            self.__doc.saveas('test.dxf')
+        
