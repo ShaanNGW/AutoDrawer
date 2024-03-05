@@ -199,9 +199,19 @@ class DrawingManager:
             line_03_txt = self.__msp.add_text(text=line_03_txt_str, height=self.__drawing_text_height).set_placement(line_03_txt_point)
 
             # Set title
-            #cs_title_text_str: str = f'{cs.get_chainage:.3f}m'
-            #cs_title_text_point = pt.add_point(pt.center(start=line_01_start, end=line_01_end), pt.point(0.0, -pt.to_meter(value=20.0, unit=pt.MM)))
-            #cs_title_text = self.__msp.add_text(text=cs_title_text_str, height=self.__text_title_height).set_placement(cs_title_text_point, align=TextEntityAlignment.MIDDLE)
+            cs_title_text_str: str = f'{cs.get_chainage:.3f}m'
+            cs_title_text_point = pt.add_point(new_base, pt.center(start=line_01_start, end=line_01_end), pt.point(0.0, -pt.to_meter(value=20.0, unit=pt.MM)))
+            cs_title_text = self.__msp.add_text(text=cs_title_text_str, height=self.__text_title_height).set_placement(cs_title_text_point, align=TextEntityAlignment.MIDDLE)
+
+            # Set Scale Horizontal
+            h_scale_text_str: str = f'Horizontal Scale 1:{h_scale}'
+            h_scale_text_point = pt.add_point(line_01_end, pt.point(0.0, -pt.to_meter(value=10.0, unit=pt.MM)), pt.point(0.0, -pt.to_meter(value=20.0, unit=pt.MM)))
+            h_scale_text = self.__msp.add_text(text=h_scale_text_str, height=self.__drawing_text_height).set_placement(h_scale_text_point, align=TextEntityAlignment.RIGHT)
+            
+            # Set Scale Horizontal
+            v_scale_text_str: str = f'Vertical Scale 1:{v_scale}'
+            v_scale_text_point = pt.add_point(h_scale_text_point, pt.point(0.0, -pt.to_meter(value=5.0, unit=pt.MM)))
+            v_scale_text = self.__msp.add_text(text=v_scale_text_str, height=self.__drawing_text_height).set_placement(v_scale_text_point, align=TextEntityAlignment.RIGHT)
 
             # Set css ground points
             cs_grounds: list = []
