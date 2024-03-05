@@ -1,6 +1,6 @@
 # Auto Drawer
 
-This Python program is helping to automate the longitudinal and cross-section drawing process using level sheets in the construction field. Every drawings are drawn by the program is saved in .dxf format. There are two data sheet templates in MS Excel format and Libra Calc format. you can use any of the file templates to add your drawing data. please DO NOT change any template's column names or any format before adding the data file to the program.
+This Python program is helping to automate the longitudinal and cross sectional drawing process using level sheets in the construction field. Every drawing which is drawn by the program is saved in .dxf format. There are two data sheet templates in MS Excel format and Libra Calc format. you can use any of the file templates to add your drawing data. please DO NOT change any template's column names or any format before adding the data file to the program.
 
 ## Used Tools
   * Python 3.12.1
