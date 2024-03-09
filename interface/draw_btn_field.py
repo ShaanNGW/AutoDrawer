@@ -73,6 +73,7 @@ class DrawingButtonField(ctk.CTkFrame):
                 css_v_scale=css_v_scale,
                 ls_title=''
                 )
+            
+            messagebox.showinfo(title='Drawing completed', message='Drawing completed')
         except Exception as ex:
             messagebox.showerror(title='Drawing Error', message='Somthing is wrong in drawing file. Drawing file not created')
-            print(ex)
