@@ -7,29 +7,41 @@ This Python program is helping to automate the longitudinal and cross sectional 
   * pip 24.0
   * pandas 2.2.1
   * ezdxf 1.1.4
+  * customtkinter 5.2.2
 
 ## Setup Before Run
 #### Step 01
-Create a virtual environment using Python.
-$python -m venv venv
-
-Activate the virtual environment
-$venv/scripts/activate
+Download app.exe file
+Download the template file (Excel or Libra Calc)
 
 #### Step 02
-Install required libraries
-$pip install pandas==2.2.1, ezdxf==1.1.4, odfpy==1.4.1
+Fill in your data to the template file
 
 #### Step 03
-Replace your data file name and location in app.py file
+Open app.exe
 
 #### Step 04
 Run the app.py file, Then the drawing will create the same directory that the app.py file exists.
+
+#### Step 05
+Select a file in step 2 using the select button
+
+#### Step 06
+Setup settings (scales, TBM values)
+
+### Step 07
+Click draw button
 
 # Warning.....!!!!
 **This Program is Not Completed Yet** In that case there can be find out some bugs.
 
 # TODO list
-  * Create a User Interface.
-  * Fix bugs.
-  * Optimize codes.
+  * Improve user interface
+    > Refine user interface
+    > Add advanced settings such as layer controls
+    > Dark and light mode changing ability
+ * Code
+    > Add layer support
+    > Improve code stability
+    > Fix Bugs
+    > Optimize code
